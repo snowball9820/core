@@ -6,7 +6,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
+
 
 class RateDiscountPolicyTest {
 
@@ -21,7 +22,8 @@ class RateDiscountPolicyTest {
         //when
         int discount = discountPolicy.discount(member, 10000);
         //then
-        Assertions.assertThat(discount).isEqualTo(1000);
+//        Assertions.assertThat(discount).isEqualTo(1000);
+        assertThat(discount).isEqualTo(1000); //코드 간결하게
     }
 
     @Test
@@ -32,7 +34,7 @@ class RateDiscountPolicyTest {
         //when
         int discount = discountPolicy.discount(member, 10000);
         //then
-        Assertions.assertThat(discount).isEqualTo(1000); //BASIC은 할인이 되면 안됨
+        assertThat(discount).isEqualTo(1000); //BASIC은 할인이 되면 안됨
         //Expected :1000
         //Actual   :0
         //기대했던 것은 1000인데 Actual이 0이라고 나오면서 테스트 실패
