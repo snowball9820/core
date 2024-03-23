@@ -1,15 +1,23 @@
 package hello.example.core.order;
 
+import hello.example.core.AppConfig;
 import hello.example.core.member.Grade;
 import hello.example.core.member.Member;
 import hello.example.core.member.MemberService;
 import hello.example.core.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
-    MemberService memberService = new MemberServiceImpl(memberRepository);
-    OrderService orderService = new OrderServiceImpl(memberRepository, discountPolicy);
+    MemberService memberService;
+    OrderService orderService;
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig= new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    } //AppConfig를 먼저 만들고 memberService,orderService를 할당해줌
 
     @Test
     void createOrder() {
