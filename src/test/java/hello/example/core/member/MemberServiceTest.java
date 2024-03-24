@@ -25,8 +25,5 @@ public class MemberServiceTest {
         //then 검증
         Assertions.assertThat(member).isEqualTo(findMember);
 
-
-
-
     }
 }
